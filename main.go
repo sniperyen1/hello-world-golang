@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"syscall"
 
 	log "github.com/sirupsen/logrus"
@@ -22,7 +23,12 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 		io.WriteString(w, "Hello Word!!!\n")
 
-		for i := 1; i <= 500; i++ {
+		for _, e := range os.Environ() {
+			pair := strings.Split(e, "=")
+			io.WriteString(w, pair[0]+"="+pair[1]+"\n")
+		}
+
+		for i := 1; i <= 90; i++ {
 			io.WriteString(w, strconv.Itoa(f())+"\n")
 		}
 
