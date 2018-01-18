@@ -6,7 +6,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"syscall"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -36,12 +35,6 @@ func main() {
 
 	})
 	http.ListenAndServe(":80", nil)
-}
-
-func currentTimeInMillis() int64 {
-	tv := new(syscall.Timeval)
-	syscall.Gettimeofday(tv)
-	return (int64(tv.Sec)*1e3 + int64(tv.Usec)/1e3)
 }
 
 func fib() func() int {
