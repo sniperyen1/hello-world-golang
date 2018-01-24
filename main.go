@@ -20,7 +20,7 @@ func main() {
 		f := fib()
 
 		w.WriteHeader(http.StatusOK)
-		io.WriteString(w, "Hello World!!!\n")
+		io.WriteString(w, "Hello World Test!!!\n")
 
 		for _, e := range os.Environ() {
 			pair := strings.Split(e, "=")
@@ -31,7 +31,7 @@ func main() {
 			io.WriteString(w, strconv.Itoa(f())+"\n")
 		}
 
-		log.Info("Hello world called")
+		log.Info("Hello world called - this is the log message")
 
 	})
 	http.ListenAndServe(":80", nil)
