@@ -20,7 +20,7 @@ func main() {
 		f := fib()
 
 		w.WriteHeader(http.StatusOK)
-		io.WriteString(w, "Hello World - bar!!!\n")
+		io.WriteString(w, "Hello World - foo!!!\n")
 
 		for _, e := range os.Environ() {
 			pair := strings.Split(e, "=")
