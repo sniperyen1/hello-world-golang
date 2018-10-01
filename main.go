@@ -6,15 +6,10 @@ import (
 	"os"
 	"strconv"
 	"strings"
-
-	log "github.com/sirupsen/logrus"
+	"log"
 )
 
 func main() {
-
-	log.SetFormatter(&log.JSONFormatter{})
-	log.SetOutput(os.Stdout)
-
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
 		f := fib()
@@ -31,7 +26,7 @@ func main() {
 			io.WriteString(w, strconv.Itoa(f())+"\n")
 		}
 
-		log.Info("Hello world called - this is the log message")
+		log.Println("Hello world called - this is the log message")
 
 	})
 	http.ListenAndServe(":80", nil)
